@@ -1,7 +1,7 @@
 import { AppRoute, AuthorizationStatus } from '../const';
 import Favorites from '../pages/favorites/favorites';
 import MainPage from '../pages/main-page/main-page';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import LoginPage from '../pages/login-page/login-page';
 import OfferPage from '../pages/offer-page/offer-page';
 import PageNotFound from '../pages/page-not-found/page-not-found';
@@ -13,7 +13,7 @@ import { loadFavoriteOffers, loadOffersAsyncThunk } from '../../store/api-action
 import { SpinnerElement } from '../spinner/spinner-element';
 import { getLoadingStatus } from '../../store/selectors';
 
-function App () : JSX.Element {
+function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(getLoadingStatus);
   useEffect(() => {
@@ -22,41 +22,39 @@ function App () : JSX.Element {
   }, [dispatch]);
 
   if (isLoading) {
-    return < SpinnerElement/>;
+    return < SpinnerElement />;
   }
 
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path={AppRoute.Root}
-            element={<MainPage/>}
-          />
-          <Route
-            path={AppRoute.Login}
-            element={<LoginPage />}
-          />
-          <Route
-            path={AppRoute.Favorites}
-            element={
-              <PrivateRoute
-                authorizationStatus={AuthorizationStatus.Auth}
-              >
-                <Favorites/>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={AppRoute.Offer}
-            element={<OfferPage />}
-          />
-          <Route
-            path='*'
-            element={<PageNotFound />}
-          />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route
+          path={AppRoute.Root}
+          element={<MainPage />}
+        />
+        <Route
+          path={AppRoute.Login}
+          element={<LoginPage />}
+        />
+        <Route
+          path={AppRoute.Favorites}
+          element={
+            <PrivateRoute
+              authorizationStatus={AuthorizationStatus.Auth}
+            >
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={AppRoute.Offer}
+          element={<OfferPage />}
+        />
+        <Route
+          path='*'
+          element={<PageNotFound />}
+        />
+      </Routes>
     </HelmetProvider>
   );
 }

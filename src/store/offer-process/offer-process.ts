@@ -3,7 +3,8 @@ import { DEFAULT_CITY, NameSpace, SortItem } from '../../components/const';
 import Offer, { City, CityNames, OfferForPage, Reviews, SotringOption } from '../../types/types';
 import { fetchNearbyCards, fetchOfferComments, getOfferInfo, loadFavoriteOffers, loadOffersAsyncThunk, postCommentToOffer, uploadFavoriteStatus } from '../api-actions';
 import { toast } from 'react-toastify';
-type offerProcess = {
+
+export type offerProcess = {
   offersList: Offer[];
   cardsLoading: boolean;
   isError: boolean;

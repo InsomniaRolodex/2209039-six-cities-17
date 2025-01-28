@@ -51,7 +51,9 @@ function OfferPage(): JSX.Element {
         <title>6 cities: offer</title>
       </Helmet>
       <Header />
-      <main className="page__main page__main--offer">
+      <main className="page__main page__main--offer"
+        data-testid='offerPageComponent'
+      >
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">

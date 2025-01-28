@@ -17,7 +17,9 @@ function MainPage(): JSX.Element {
         <title>6 cities</title>
       </Helmet>
       <Header />
-      <main className={cardsByCity.length ? 'page__main page__main--index' : 'page__main page__main--index page__main--index-empty'}>
+      <main className={cardsByCity.length ? 'page__main page__main--index' : 'page__main page__main--index page__main--index-empty'}
+        data-testid='mainPageComponent'
+      >
         <h1 className='visually-hidden'>Cities</h1>
         <div className='tabs'>
           <LocationsList currentCity={currentCity} />
