@@ -32,11 +32,12 @@ function FavoriteButton({className, offerId}: FavoriteButtonProps): JSX.Element 
       className={`${className}__bookmark-button button ${isFavorite && authorized ? `${className}__bookmark-button--active` : ''}`}
       type='button'
       onClick={handleFavoriteClick}
+      data-testid='favButton'
     >
-      <svg className={`${className}__bookmark-icon`} width={iconWidth} height={iconHeight}>
+      <svg className={`${className}__bookmark-icon`} width={iconWidth} height={iconHeight} data-testid='icon'>
         <use xlinkHref='#icon-bookmark'></use>
       </svg>
-      <span className='visually-hidden'>{isFavorite && authorized ? 'In bookmarks' : 'To bookmarks'}</span>
+      <span className='visually-hidden' data-testid='buttonText'>{isFavorite && authorized ? 'In bookmarks' : 'To bookmarks'}</span>
     </button>
   );
 }

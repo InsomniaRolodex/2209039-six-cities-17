@@ -9,7 +9,9 @@ type LocationsListProps = {
 function LocationsList ({currentCity}: LocationsListProps) :JSX.Element {
   return (
     <section className='locations container'>
-      <ul className='locations__list tabs__list'>
+      <ul className='locations__list tabs__list'
+        data-testid='locationsListComponent'
+      >
         {CITY_LIST.map((city) => <Location city={city} currentCity={currentCity} key={city}/>)}
       </ul>
     </section>

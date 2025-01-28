@@ -35,6 +35,7 @@ function LoginForm(): JSX.Element {
         <label className='visually-hidden'>E-mail</label>
         <input className='login__input form__input' type='email' name='email' placeholder='Email' required
           ref={emailRef}
+          data-testid='loginElement'
         />
       </div>
       <div className='login__input-wrapper form__input-wrapper'>
@@ -43,6 +44,7 @@ function LoginForm(): JSX.Element {
           ref={passwordRef}
           pattern='(?=.*\d)(?=.*[a-zA-Z]).*'
           title='Пароль должен содержать хотя бы одну букву и одну цифру'
+          data-testid='passwordElement'
         />
       </div>
       <button className='login__submit form__submit button' type='submit'>Sign in</button>

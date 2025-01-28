@@ -16,7 +16,9 @@ function Favorites(): JSX.Element {
         <title>6 cities: favorites</title>
       </Helmet>
       <Header />
-      <main className={`page__main page__main--favorites ${favoriteCards.length ? '' : 'page__main--favorites-empty'}`}>
+      <main className={`page__main page__main--favorites ${favoriteCards.length ? '' : 'page__main--favorites-empty'}`}
+        data-testid='favoritesPageComponent'
+      >
         <div className="page__favorites-container container">
           {favoriteCards.length
             ? <FavoritesCards offers={favoriteCards}/>
