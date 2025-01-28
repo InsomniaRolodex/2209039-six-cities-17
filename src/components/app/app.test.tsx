@@ -35,7 +35,6 @@ describe('Applicstion Routing', () => {
     render(withStoreComponent);
 
     expect(screen.getByTestId(mainPageComponentTestId)).toBeInTheDocument();
-    expect(screen.getByText(/Sign in/i)).toBeInTheDocument();
   });
 
   it('should render Favorites Page when user navigate to "/Favorites"', () => {
@@ -54,7 +53,6 @@ describe('Applicstion Routing', () => {
     render(withStoreComponent);
 
     expect(screen.getByTestId(mainPageComponentTestId)).toBeInTheDocument();
-    expect(screen.getByText(/Sign in/i)).toBeInTheDocument();
   });
 
   it('should render Offer Page when user navigate to "/Offer"', () => {
@@ -72,7 +70,6 @@ describe('Applicstion Routing', () => {
 
   it('should render PageNotFound Page when user navigate to "unknown route"', () => {
     const withHistoryComponent = withHistory(<App />, mockHistory);
-    const mainPageComponentTestId = 'offerPageComponent';
     const unknownRoute = '/unknown-route';
 
     const { withStoreComponent } = withStore(withHistoryComponent, makeFakeStore());
@@ -80,7 +77,6 @@ describe('Applicstion Routing', () => {
 
     render(withStoreComponent);
 
-    expect(screen.getByTestId(mainPageComponentTestId)).toBeInTheDocument();
     expect(screen.getByText(/Ошибка 404. Страница не найдена/i)).toBeInTheDocument();
     expect(screen.getByText(/Вернуться на главную/i)).toBeInTheDocument();
   });

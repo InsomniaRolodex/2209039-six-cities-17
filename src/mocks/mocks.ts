@@ -114,7 +114,7 @@ export const makeFakeStore = (initialState?: Partial<State>): State => ({
     isError: false,
     city: DEFAULT_CITY,
     currentSort: SortItem.Popular,
-    offerInfo: null,
+    offerInfo: makeFakeOfferInfo(),
     offerError: false,
     nearbyOffers: [makeFakeOffers()],
     comments: [makeFakeComments()],

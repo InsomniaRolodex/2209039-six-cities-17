@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-app-dispatch';
 import { useEffect } from 'react';
 import { fetchNearbyCards, fetchOfferComments, getOfferInfo } from '../../../store/api-actions';
-import { getLoadingStatus, getNearbyCards, getOffer, getReviews, isAuth } from '../../../store/selectors';
+import { getNearbyCards, getOffer, getOfferErrorStatus, getReviews, isAuth } from '../../../store/selectors';
 import { SpinnerElement } from '../../spinner/spinner-element';
 import PageNotFound from '../page-not-found/page-not-found';
 import { countStarsNumber } from '../../../utils';
@@ -31,16 +31,17 @@ function OfferPage(): JSX.Element {
     }
   }, [id, dispatch]);
 
-  const isLoading = useAppSelector(getLoadingStatus);
   const authorized = useAppSelector(isAuth);
   const offer = useAppSelector(getOffer);
   const nearbyOffers = useAppSelector(getNearbyCards).slice(-3);
+  const offersError = useAppSelector(getOfferErrorStatus);
+
+  if (offersError) {
+    return <PageNotFound />;
+  }
 
   if (!offer || !id) {
-    if (isLoading) {
-      return <SpinnerElement />;
-    }
-    return < PageNotFound/>;
+    return <SpinnerElement />;
   }
 
   const {title, type, price, images, description, bedrooms, isPremium, goods, maxAdults, host, rating} = offer;

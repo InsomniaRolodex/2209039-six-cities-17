@@ -17,6 +17,7 @@ export const getSortingType = ((state: Pick<State, NameSpace.Offer>) => state[Na
 export const getFavoriteCards = ((state: Pick<State, NameSpace.Offer>) => state[NameSpace.Offer].favoriteOffers);
 export const getFavoriteCardById = ((state: Pick<State, NameSpace.Offer>, id: OfferId) => state[NameSpace.Offer].favoriteOffers
   .findIndex((offer) => offer.id === id) !== -1);
+export const getOfferErrorStatus = (state: Pick<State, NameSpace.Offer>) => state[NameSpace.Offer].offerError;
 
 
 export const isAuth = ((state: Pick<State, NameSpace.User>) => state[NameSpace.User].authorizationStatus === 'AUTH');
